@@ -11,6 +11,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   TextEditingController controller = TextEditingController(text: 'Init Value');
+  bool showPassword = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,6 +24,16 @@ class _MyAppState extends State<MyApp> {
         child: Column(
           children: [
             TextField(
+              decoration: new InputDecoration(
+                border: OutlineInputBorder(),
+                focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.amber)),
+                suffixIcon: IconButton(icon: Icon(Icons.remove_red_eye_outlined, color: Colors.amber,),onPressed: (){
+                  setState(() {
+                    showPassword = !showPassword;
+                  });
+                },)
+              ),
+              obscureText: showPassword,
               onChanged: (value) {
                 setState(() {});
               },
